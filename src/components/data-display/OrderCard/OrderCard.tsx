@@ -1,10 +1,9 @@
 'use client';
-/* eslint-disable react/display-name */
 
-import { styled, theme } from '@/styles/stitches.config';
-import { ComponentProps, forwardRef } from 'react';
+import { forwardRef } from 'react';
+import { Container, Props } from './order-card.styles';
 
-interface OrderCardProps extends ComponentProps<typeof Container> {
+interface OrderCardProps extends Props {
   table: string;
   productsTotal: number;
 }
@@ -19,18 +18,4 @@ export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
     );
   }
 );
-
-const Container = styled('div', {
-  minHeight: '10rem',
-  maxHeight: '10rem',
-
-  borderRadius: theme.radii.sm,
-
-  _flexGrow: 1,
-  _alignCenter: true,
-  _flexColumn: true,
-
-  backgroundColor: theme.colors.background3,
-  _border: 'All',
-  borderColor: theme.colors.primary,
-});
+OrderCard.displayName = 'OrderCard';

@@ -1,19 +1,13 @@
 'use client';
-/* eslint-disable react/display-name */
 
-import { NoContent } from '@/components/feedback';
-import { styled, theme } from '@/styles/stitches.config';
-import { Order } from '@/types';
-import {
-  ComponentProps,
-  forwardRef,
-  JSXElementConstructor,
-  ReactElement,
-} from 'react';
+import { forwardRef, JSXElementConstructor, ReactElement } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { OrderCard } from '../OrderCard/OrderCard';
+import { NoContent } from '@/components/feedback';
+import { OrderCard } from '@/components/data-display';
+import { Order } from '@/types';
+import { Container, OrdersContainer, Props } from './order-list.styles';
 
-interface OrderListProps extends ComponentProps<typeof OrdersContainer> {
+interface OrderListProps extends Props {
   title: string;
   orderListData: Order[] | undefined;
   providedPlaceholder:
@@ -29,11 +23,11 @@ export const OrderList = forwardRef<HTMLDivElement, OrderListProps>(
     ref
   ) => {
     return (
-      <Container>
+      <Container {...props}>
         <>
           <h2>{title}</h2>
 
-          <OrdersContainer ref={ref} {...props}>
+          <OrdersContainer ref={ref}>
             {orderListData && orderListData.length > 0 ? (
               orderListData?.map((order, index) => (
                 <Draggable key={order.id} draggableId={order.id} index={index}>
@@ -58,26 +52,4 @@ export const OrderList = forwardRef<HTMLDivElement, OrderListProps>(
     );
   }
 );
-
-const Container = styled('div', {
-  display: 'flex',
-  flex: 1,
-  flexDirection: 'column',
-  gap: '0.5rem',
-
-  borderRadius: theme.radii.md,
-  padding: '1.25rem',
-
-  backgroundColor: theme.colors.background2,
-});
-
-const OrdersContainer = styled('div', {
-  display: 'flex',
-  flex: 1,
-  flexDirection: 'column',
-  gap: '1rem',
-
-  paddingRight: '0.25rem',
-
-  overflow: 'auto',
-});
+OrderList.displayName = 'OrderList';

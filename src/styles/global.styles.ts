@@ -45,8 +45,8 @@ export const stitchesGlobalStyles = globalCss({
   },
 
   '*::-webkit-scrollbar': {
-    width: '0.75rem',
-    height: '0.75rem',
+    width: '0.5rem',
+    height: '0.5rem',
   },
   '*::-webkit-scrollbar-track': {
     backgroundColor: theme.colors.background3,
@@ -63,7 +63,7 @@ export const stitchesGlobalStyles = globalCss({
       filter: 'brightness(1.5)',
     },
     '&:active': {
-      backgroundColor: theme.colors.primary,
+      backgroundColor: theme.colors.secondary,
     },
   },
 
