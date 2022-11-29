@@ -5,6 +5,7 @@ import { styleUtils } from './utils.styles';
 export type CSS = Stitches.CSS<typeof config>;
 export type VariantProps<T extends { [key: string]: any; [key: symbol]: any }> =
   Stitches.VariantProps<T>;
+export type ComponentProps<T> = Stitches.ComponentProps<T>;
 
 const stitches = Stitches.createStitches({
   theme: defaultTheme,

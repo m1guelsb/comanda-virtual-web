@@ -1,14 +1,16 @@
+import { createTheme } from './stitches.config';
+
 export const defaultTheme = {
   colors: {
-    primary: '#7221de',
-    secondary: '#FF6A55',
+    primary: '#e02f37',
+    secondary: '#900f16',
 
-    background1: '#141320',
-    background2: '#1c1a2d',
-    background3: '#26243e',
+    background1: '#d7dde4',
+    background2: '#E4E8ED',
+    background3: '#F0F2F5',
 
-    text1: '#EFEFEF',
-    text2: '#9A9FA5',
+    text1: '#0f1826',
+    text2: '#262f3c',
     text3: '#5B6268',
 
     success: '#66b576',
