@@ -1,5 +1,4 @@
 import { CSS, styled, theme } from '@/styles/stitches.config';
-import { NavButton } from './NavButton';
 
 interface SidebarProps {
   css?: CSS;

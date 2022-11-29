@@ -2,8 +2,6 @@ import { QueryProvider } from '@/contexts/QueryContext';
 import { stitchesGlobalStyles } from '@/styles/global.styles';
 import { getCssText } from '@/styles/stitches.config';
 
-import { Header, Sidebar } from '@/components/layout';
-
 export default function RootLayout({
   children,
 }: {
@@ -52,7 +50,9 @@ export default function RootLayout({
         />
       </head>
 
-      <body>{children}</body>
+      <body>
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }

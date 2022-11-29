@@ -1,17 +1,24 @@
-import { styled, theme } from '@/styles/stitches.config';
+'use client';
+/* eslint-disable react/display-name */
 
-interface OrderCardProps {
+import { styled, theme } from '@/styles/stitches.config';
+import { ComponentProps, forwardRef } from 'react';
+
+interface OrderCardProps extends ComponentProps<typeof Container> {
   table: string;
   productsTotal: number;
 }
-export const OrderCard = ({ table, productsTotal }: OrderCardProps) => {
-  return (
-    <Container>
-      <p>Mesa: {table}</p>
-      <p>Itens: {productsTotal}</p>
-    </Container>
-  );
-};
+
+export const OrderCard = forwardRef<HTMLDivElement, OrderCardProps>(
+  ({ table, productsTotal, ...props }, ref) => {
+    return (
+      <Container ref={ref} {...props}>
+        <p>Mesa: {table}</p>
+        <p>Itens: {productsTotal}</p>
+      </Container>
+    );
+  }
+);
 
 const Container = styled('div', {
   minHeight: '10rem',
