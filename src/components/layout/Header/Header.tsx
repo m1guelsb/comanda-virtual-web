@@ -1,26 +1,11 @@
-import { CSS, styled, theme } from '@/styles/stitches.config';
+import { Container, Props } from './header.styles';
 
-interface HeaderProps {
-  css?: CSS;
-}
+export interface HeaderProps extends Props {}
+
 export const Header = ({ ...props }: HeaderProps) => {
   return (
-    <HeaderContainer {...props}>
+    <Container {...props}>
       <h1>Comanda Virtual</h1>
-    </HeaderContainer>
+    </Container>
   );
 };
-
-const HeaderContainer = styled('header', {
-  height: '5.5rem',
-
-  display: 'flex',
-  alignItems: 'center',
-
-  _paddingX: '2rem',
-
-  backgroundColor: theme.colors.background1,
-
-  _border: 'Bottom',
-  borderColor: theme.colors.background3,
-});
