@@ -1,3 +1,4 @@
+'use client';
 import { CSS, styled, theme } from '@/styles/stitches.config';
 
 interface NoContentProps {

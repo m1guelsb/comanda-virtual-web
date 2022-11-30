@@ -1,3 +1,5 @@
+'use client';
+
 import { QueryProvider } from '@/contexts/QueryContext';
 import { stitchesGlobalStyles } from '@/styles/global.styles';
 import { getCssText } from '@/styles/stitches.config';

@@ -1,3 +1,4 @@
+'use client';
 import { Container, Props } from './header.styles';
 
 export interface HeaderProps extends Props {}

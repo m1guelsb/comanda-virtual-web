@@ -70,17 +70,10 @@ export const DnDOrdersColumns = ({ ordersColumns }: DnDOrdersColumnsProps) => {
       )?.[0];
 
       if (updatedOrder) {
-        editOrder(
-          {
-            patchId: updatedOrder.id,
-            payload: { status: destination.droppableId as tOrderState },
-          },
-          {
-            onSuccess() {
-              queryClient.invalidateQueries(['orders']);
-            },
-          }
-        );
+        editOrder({
+          patchId: updatedOrder.id,
+          payload: { status: destination.droppableId as tOrderState },
+        });
       }
     } else {
       const column =

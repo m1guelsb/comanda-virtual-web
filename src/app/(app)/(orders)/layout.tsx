@@ -1,3 +1,4 @@
+'use client';
 import { styled } from '@/styles/stitches.config';
 
 export default function OrdersLayout({

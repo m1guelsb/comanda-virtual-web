@@ -1,3 +1,5 @@
+'use client';
+
 import { Header, Sidebar } from '@/components/layout';
 import { MainContent, AppContainer } from './app.style';
 

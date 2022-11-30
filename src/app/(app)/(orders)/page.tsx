@@ -1,13 +1,14 @@
-'use client';
+import { Order } from '@/types';
+import { Orders } from './orders';
 
-import { DnDOrdersColumns } from '@/components/data-display';
-import { useListOrder } from '@/hooks/api/orders';
-import { useOrdersColumns } from '@/hooks/helpers';
+const getOrders = async (): Promise<Order[]> => {
+  return fetch('https://comanda-virtual-api.onrender.com/orders', {
+    cache: 'no-store',
+  }).then((res) => res.json());
+};
 
-export default function Orders() {
-  const { orderList } = useListOrder();
+export default async function OrdersPage() {
+  const orderList = await getOrders();
 
-  const { ordersColumns } = useOrdersColumns({ orderList });
-
-  return <DnDOrdersColumns ordersColumns={ordersColumns} />;
+  return <Orders orderList={orderList} />;
 }
