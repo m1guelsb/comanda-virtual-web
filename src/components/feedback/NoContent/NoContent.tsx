@@ -1,4 +1,4 @@
-import { CSS, styled } from '@/styles/stitches.config';
+import { CSS, styled, theme } from '@/styles/stitches.config';
 
 interface NoContentProps {
   message: string;
@@ -15,4 +15,6 @@ const Container = styled('div', {
   flex: 1,
   _alignCenter: true,
   textAlign: 'center',
+
+  color: theme.colors.text3,
 });

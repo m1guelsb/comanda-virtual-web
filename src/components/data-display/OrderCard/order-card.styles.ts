@@ -14,5 +14,5 @@ export const Container = styled('div', {
 
   backgroundColor: theme.colors.background3,
   _border: 'All',
-  borderColor: theme.colors.primary,
+  borderColor: '#ffffff',
 });

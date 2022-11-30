@@ -6,21 +6,37 @@ import { OrderList } from '@/components/data-display';
 import { tOrdersColumns, tOrderState } from '@/types';
 import { Container, Props } from './dnd-orders-columns.styles';
 
+import {
+  useIsFetching,
+  useIsMutating,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
+import { useEditOrder } from '@/hooks/api/orders';
+
 interface DnDOrdersColumnsProps extends Props {
   ordersColumns: tOrdersColumns | undefined;
 }
 export const DnDOrdersColumns = ({ ordersColumns }: DnDOrdersColumnsProps) => {
   const [columns, setColumns] = useState<tOrdersColumns | undefined>();
 
-  useEffect(() => {
-    setColumns(ordersColumns);
-  }, [ordersColumns]);
+  const queryClient = useQueryClient();
+  const { editOrder, isLoading } = useEditOrder();
 
-  console.log('columns', columns);
+  const isUpdating = !!useIsMutating(['edit-order']);
+  const isFetching = !!useIsFetching(['orders']);
+
+  useEffect(() => {
+    if (!isUpdating && !isFetching && !isLoading) {
+      setColumns(ordersColumns);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ordersColumns]);
 
   const handleOnDragEnd = (result: DropResult) => {
     if (!columns) return;
     if (!result.destination) return;
+
     const { source, destination } = result;
 
     if (source.droppableId !== destination.droppableId) {
@@ -48,6 +64,24 @@ export const DnDOrdersColumns = ({ ordersColumns }: DnDOrdersColumnsProps) => {
           }),
         },
       });
+
+      const updatedOrder = destItems.filter(
+        (item) => item.status !== destination.droppableId
+      )?.[0];
+
+      if (updatedOrder) {
+        editOrder(
+          {
+            patchId: updatedOrder.id,
+            payload: { status: destination.droppableId as tOrderState },
+          },
+          {
+            onSuccess() {
+              queryClient.invalidateQueries(['orders']);
+            },
+          }
+        );
+      }
     } else {
       const column =
         columns[source.droppableId as 'WAITING' | 'IN_PRODUCTION' | 'DONE'];
@@ -78,7 +112,19 @@ export const DnDOrdersColumns = ({ ordersColumns }: DnDOrdersColumnsProps) => {
                     title={column.title}
                     orderListData={column.items}
                     providedPlaceholder={provided.placeholder}
-                    noContentMessage={column.noContent}
+                    noContentMessage={
+                      snapshot.isDraggingOver ? '' : column.noContent
+                    }
+                    css={{
+                      backgroundColor:
+                        columnId === 'WAITING'
+                          ? '$waiting'
+                          : columnId === 'IN_PRODUCTION'
+                          ? '$in_prod'
+                          : columnId === 'DONE'
+                          ? '$done'
+                          : '$background1',
+                    }}
                   />
                 )}
               </Droppable>
