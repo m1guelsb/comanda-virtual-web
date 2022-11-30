@@ -14,14 +14,16 @@ export const Container = styled('div', {
   paddingBottom: '0',
 
   backgroundColor: theme.colors.background2,
+  transition: '0.3s',
 });
 
 export const OrdersContainer = styled('div', {
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
+  borderRadius: theme.radii.sm,
 
-  paddingRight: '0.5rem',
+  paddingRight: '0.25rem',
 
   overflow: 'auto',
   scrollbarGutter: 'stable',

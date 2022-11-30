@@ -9,6 +9,10 @@ export const defaultTheme = {
     background2: '#E4E8ED',
     background3: '#F0F2F5',
 
+    waiting: '#d4d0eb',
+    in_prod: '#e4ded7',
+    done: '#f6c3c5',
+
     text1: '#0f1826',
     text2: '#262f3c',
     text3: '#5B6268',
