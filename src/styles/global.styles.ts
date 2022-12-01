@@ -20,17 +20,20 @@ export const stitchesGlobalStyles = globalCss({
       fontFamily: 'Poppins',
       src: "url('/fonts/Poppins-Regular.ttf')",
       fontWeight: '400',
+      fontDisplay: 'optional',
       fontStyle: 'normal',
     },
     {
       fontFamily: 'Poppins',
       src: "url('/fonts/Poppins-Medium.ttf')",
+      fontDisplay: 'optional',
       fontWeight: '500',
       fontStyle: 'normal',
     },
     {
       fontFamily: 'Poppins',
       src: "url('/fonts/Poppins-Bold.ttf')",
+      fontDisplay: 'optional',
       fontWeight: '700',
       fontStyle: 'normal',
     },
@@ -68,7 +71,8 @@ export const stitchesGlobalStyles = globalCss({
     height: '100%',
     width: '100%',
     display: 'flex',
-    fontFamily: theme.fonts.Poppins,
+    fontFamily:
+      'Poppins, Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji',
 
     backgroundColor: theme.colors.background1,
     color: theme.colors.text1,
